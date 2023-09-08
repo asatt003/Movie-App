@@ -21,6 +21,19 @@ app.get("/", async (req, res) => {
     }
   });
 
+  app.post("/", async (req, res) => {
+    try {
+        let query = knex("movies").select("*");
+        req.body.title === "*" ? query = knex("movies").select("*") : query.where('title', 'like', `%${req.body.title}%`);
+        const data = await query;
+// 
+        data === null ? res.send("Nope") : res.status(200).json(data);
+      } catch (err) {
+        console.log(err);
+        res.status(404).json({ message: "We're sorry. All our representatives are currently helping other customers. Please call again later." });
+      }
+  });
+
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });

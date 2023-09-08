@@ -2,6 +2,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import logo from './logo.svg';
 import './App.css';
+import Search from "./components/form/search";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
@@ -10,7 +11,7 @@ function App() {
       .then((result) => result.json())
       .then((data) => setMovieData(data))
       .catch(err => console.log(err))
-  }, [movieData]);
+  }, []);
   return (
     <div className="Movie App">
       <header className="App-header">
@@ -18,6 +19,7 @@ function App() {
         {movieData.map((movie) => (
           <p>{movie.title}</p>
         ))}
+        <Search setData={setMovieData}/>
       </header>
     </div>
   );
