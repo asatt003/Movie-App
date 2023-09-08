@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Back-end application",
+  "main": "server.js",
+  "scripts": {
+    "test": "Test",
+    "start": "nodemon server.js",
+    "view": "node database/view/view_movies.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asatt003/Movie-App.git"
+  },
+  "keywords": [
+    "Server"
+  ],
+  "author": "Allyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asatt003/Movie-App/issues"
+  },
+  "homepage": "https://github.com/asatt003/Movie-App#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "faker": "^5.5.3",
+    "knex": "^2.5.1",
+    "pg": "^8.11.3"
+  }
+}
