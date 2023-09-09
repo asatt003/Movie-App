@@ -2,7 +2,10 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import logo from './logo.svg';
 import './App.css';
-import Search from "./components/form/search";
+import Search from "./components/form/Search";
+import AddMovies from "./components/form/Add";
+import DeleteMovies from "./components/form/Delete"
+import UserAddedToggleButton from "./components/UserAddedbutton";
 
 function App() {
   const [movieData, setMovieData] = useState([]);
@@ -19,7 +22,10 @@ function App() {
         {movieData.map((movie) => (
           <p>{movie.title}</p>
         ))}
+        <UserAddedToggleButton setData={setMovieData}/>
         <Search setData={setMovieData}/>
+        <AddMovies setData={setMovieData}/>
+        <DeleteMovies setData={setMovieData}/>
       </header>
     </div>
   );

@@ -7,6 +7,8 @@ exports.up = function(knex) {
     .createTable("movies", function (table) {
         table.increments("id").primary();
         table.string("title").notNullable();
+        table.boolean("addedByUser").notNullable();
+        table.boolean("watched").notNullable();
     })
 };
 

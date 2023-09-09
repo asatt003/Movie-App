@@ -26,23 +26,24 @@ const colorPalette = {
     backgroundColor: colorPalette.primaryDark,
   });
 
-export default function Search(props) {
-    //const navigate = useNavigate();
+export default function AddMovies(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
         var formData = new FormData(event.currentTarget)
-
-        let newSearch = {
-            title: (formData.get('SearchMovies') === null ? "Christopher Hesser" :
-                formData.get('SearchMovies').toString().length === 0 ? "Christopher Hesser" : formData.get('SearchMovies'))
+        event.target.reset();
+        
+        let newAdd = {
+            title: (formData.get('AddMovies') === null ? "Christopher Hesser" :
+                formData.get('AddMovies').toString().length === 0 ? "Christopher Hesser" : formData.get('AddMovies'))
         };
+
         fetch("http://localhost:8080/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(newSearch)
+            body: JSON.stringify(newAdd)
         })
             .then((rawResponse) => {
                 if (!rawResponse.ok) {
@@ -80,8 +81,9 @@ export default function Search(props) {
                                         alignItems: 'center',
                                         '& .MuiTextField-root': { width: '25ch' },
                                     }}>
-                                        <p sx={{color: "red"}}>Type * in the search field to show all movies</p>
-                                    <TextField name="SearchMovies" label={'Search Movies'} id="SearchFormMovies" color="success" margin="normal" focused />
+                                        <p sx={{color: "red"}}>Add a movie to the list:</p>
+                                    <TextField name="AddMovies" label={'Add Movie'} id="AddFormMovies" color="success" margin="normal" focused />
+                                    {/* <TextField name="WatchedMovies" label={'Watched Movie'} id="WatchedFormMovies" color="success" margin="normal" focused /> */}
                                     <Box
                                         sx={{
                                             padding: '25px'
@@ -91,7 +93,7 @@ export default function Search(props) {
                                             margin="normal"
                                             type="submit"
                                             color="success"
-                                        >Search</Button>
+                                        >Add</Button>
                                     </Box>
                                 </Box>
                         </Grid>
